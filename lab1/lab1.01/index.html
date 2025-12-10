@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kittiphop's Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- ตั้งค่าตัวแปรสี (Neon Theme) --- */
+        :root {
+            --bg-color: #050505;
+            --card-bg: #1a1a1a;
+            --primary-neon: #00ffcc; /* เขียวนีออน */
+            --secondary-neon: #ff00ff; /* ชมพูนีออน */
+            --text-color: #e0e0e0;
+            --matrix-green: #0f0;
+        }
+
+        /* --- Global Reset --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Share Tech Mono', monospace; /* ฟอนต์สไตล์ Tech */
+            line-height: 1.6;
+            background-image: 
+                linear-gradient(rgba(0, 255, 204, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 204, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px; /* สร้างลายตาราง Grid */
+        }
+
+        /* --- Layout Container --- */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            border-left: 1px solid var(--primary-neon);
+            border-right: 1px solid var(--primary-neon);
+            min-height: 100vh;
+            box-shadow: 0 0 50px rgba(0, 255, 204, 0.1);
+        }
+
+        /* --- Header --- */
+        header {
+            text-align: center;
+            padding: 40px 0;
+            border-bottom: 2px dashed var(--secondary-neon);
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-family: 'Press Start 2P', cursive; /* ฟอนต์ Pixel */
+            font-size: 1.5rem;
+            color: var(--primary-neon);
+            text-shadow: 2px 2px 0px #ff00ff; /* เงาซ้อนแบบ Glitch */
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        header p {
+            color: var(--secondary-neon);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* --- Navigation --- */
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border: 1px solid var(--primary-neon);
+            box-shadow: 0 0 10px var(--primary-neon);
+            margin-bottom: 40px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: 0.3s;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--primary-neon);
+            text-shadow: 0 0 8px var(--primary-neon);
+        }
+
+        nav a::before {
+            content: '>';
+            opacity: 0;
+            margin-right: 5px;
+            color: var(--secondary-neon);
+        }
+
+        nav a:hover::before {
+            opacity: 1;
+        }
+
+        /* --- Main Content Sections --- */
+        section, aside {
+            background: var(--card-bg);
+            padding: 20px;
+            margin-bottom: 30px;
+            border: 1px solid #333;
+            position: relative;
+        }
+
+        /* มุมกรอบแบบ Cyberpunk */
+        section::after, aside::after {
+            content: '';
+            position: absolute;
+            top: -1px; left: -1px;
+            width: 20px; height: 20px;
+            border-top: 3px solid var(--secondary-neon);
+            border-left: 3px solid var(--secondary-neon);
+        }
+
+        h2 {
+            color: var(--secondary-neon);
+            border-left: 5px solid var(--primary-neon);
+            padding-left: 15px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            font-size: 1.5rem;
+        }
+
+        /* --- Hero / About --- */
+        .hero {
+            display: flex;
+            flex-direction: column; /* มือถือเรียงลง */
+            align-items: center;
+            text-align: center;
+            gap: 20px;
+        }
+
+        @media(min-width: 768px) {
+            .hero {
+                flex-direction: row; /* จอใหญ่เรียงซ้ายขวา */
+                text-align: left;
+            }
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 3px solid var(--primary-neon);
+            box-shadow: 0 0 20px var(--primary-neon);
+            object-fit: cover;
+            filter: grayscale(100%); /* ทำรูปเป็นขาวดำ */
+            transition: 0.5s;
+        }
+
+        .profile-img:hover {
+            filter: grayscale(0%); /* เมาส์ชี้แล้วคืนสี */
+            transform: scale(1.05);
+        }
+
+        /* --- Columns Layout --- */
+        .columns {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        @media(min-width: 768px) {
+            .columns {
+                grid-template-columns: 2fr 1fr; /* ซ้ายกว้าง ขวาแคบ */
+            }
+        }
+
+        /* --- List --- */
+        ul {
+            list-style: none;
+            padding-left: 10px;
+        }
+        ul li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 25px;
+        }
+        ul li::before {
+            content: '⚡';
+            position: absolute;
+            left: 0;
+            color: yellow;
+        }
+
+        /* --- Table --- */
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin-top: 20px;
+            border: 1px solid var(--primary-neon);
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid #333;
+        }
+
+        th {
+            background-color: rgba(0, 255, 204, 0.1);
+            color: var(--primary-neon);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        td {
+            color: #fff;
+        }
+
+        tr:hover td {
+            background-color: rgba(255, 0, 255, 0.1);
+            color: var(--secondary-neon);
+        }
+
+        /* --- Form --- */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        label {
+            color: var(--primary-neon);
+            font-size: 0.9rem;
+        }
+
+        input, select, textarea {
+            background: #000;
+            border: 1px solid #555;
+            padding: 10px;
+            color: var(--primary-neon);
+            font-family: 'Share Tech Mono', monospace;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: var(--secondary-neon);
+            box-shadow: 0 0 10px var(--secondary-neon);
+        }
+
+        .btn {
+            background: transparent;
+            border: 2px solid var(--primary-neon);
+            color: var(--primary-neon);
+            padding: 10px 20px;
+            text-transform: uppercase;
+            cursor: pointer;
+            font-weight: bold;
+            font-family: 'Share Tech Mono', monospace;
+            transition: 0.3s;
+            text-align: center;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        button.btn:hover, a.btn:hover {
+            background: var(--primary-neon);
+            color: #000;
+            box-shadow: 0 0 20px var(--primary-neon);
+        }
+
+        /* --- Social Links --- */
+        .social {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .social .btn {
+            border-color: var(--secondary-neon);
+            color: var(--secondary-neon);
+            flex: 1;
+            font-size: 0.8rem;
+        }
+
+        .social .btn:hover {
+            background: var(--secondary-neon);
+            color: #fff;
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 20px;
+            border-top: 1px solid #333;
+            font-size: 0.8rem;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+    <header>
+      <h1>นายกิตติภพ สว่างเจริญทรัพย์</h1>
+      <p>SYSTEM: ONLINE | STATUS: ENGINEERING STUDENT</p>
+    </header>
+
+    <nav aria-label="เมนูหลัก">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+      <a href="#table">Data</a>
+    </nav>
+
+    <main>
+      <section class="hero" id="about" aria-labelledby="about-title">
+        <img src="../lab1/img/me.jpeg" alt="รูปโปรไฟล์ของ ศิลวัต" class="profile-img">
+        <div class="intro">
+          <h2 id="about-title">Identity Confirmed</h2>
+          <p>> นายกิตติภพ สว่างเจริญทรัพย์</p>
+          <p>> มหาวิทยาลัยเทคโนโลยีราชมงคลล้านนา เชียงใหม่</p>
+          <p style="color: var(--primary-neon); margin-top:10px;">> Faculty: Engineering | Major: Software Engineering</p>
+        </div>
+      </section>
+
+      <div class="columns">
+        <section id="projects" aria-labelledby="projects-title">
+          <h2 id="projects-title">Objective / Goals</h2>
+          <ul>
+            <li>Access Level: Web Development Knowledge</li>
+            <li>Skill Acquired: Website Creation</li>
+            <li>Skill Acquired: UI/UX Design Implementation</li>
+          </ul>
+
+          <h2 id="table">Database: Favorite Food</h2>
+          <table aria-label="ตารางอาหาร">
+            <thead>
+              <tr>
+                <th colspan="3">DATA SET: FAVORITE ITEMS</th> 
+              </tr>
+              <tr>
+                <th>Rice (Main)</th>
+                <th>Pork (Fruit?)</th>
+                <th>Liquid</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>ผัดกะเพรา</td> 
+                <td>มะม่วง</td>
+                <td>ชาเย็น</td>
+              </tr>
+              <tr>
+                <td>ผัดคะน้าหมูกรอบ</td>
+                <td>องุ่น</td>
+                <td>ชาเขียว</td>
+              </tr>
+              <tr>
+                <td>ผัดผักบุ้ง</td>
+                <td>แตงโม</td>
+                <td>ชามะนาว</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <aside aria-label="ข้อมูลติดต่อด่วน">
+          <h2>Transmission / Contact</h2>
+
+          <form id="contact" action="#" method="post" aria-labelledby="contact">
+            <label for="name">USER ID (Name)</label>
+            <input type="text" id="name" name="name" placeholder="Enter Name">
+
+            <label for="email">LINK ADDRESS (Email)</label>
+            <input type="email" id="email" name="email" placeholder="you@gmail.com">
+
+            <label for="role">CLASS</label>
+            <select id="role" name="role">
+              <option value="">-- SELECT --</option>
+              <option value="student">Student</option>
+              <option value="teacher">Professor</option>
+            </select>
+
+            <label for="message">DATA PACKET (Message)</label>
+            <textarea id="message" name="message" rows="4" placeholder="Type data..."></textarea>
+
+            <button type="submit" class="btn">UPLOAD DATA</button>
+          </form>
+
+          <div style="margin-top:20px;">
+            <h3 style="color: var(--text-color); margin-bottom: 10px;">Connect Nodes</h3>
+            <div class="social">
+              <a class="btn" href="" target="_blank" rel="noopener noreferrer">FB</a>
+              <a class="btn" href="" target="_blank" rel="noopener noreferrer">IG</a>
+              <a class="btn" href="tel:0980029505">Call</a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </main>
+
+    <footer>
+      <p>COPYRIGHT © 2025 KITTIPHOP S.</p>
+      <p>ID: RMUTL 68543210021-0 | TERMINATING SESSION...</p>
+    </footer>
+  </div>
+</body>
+</html>
