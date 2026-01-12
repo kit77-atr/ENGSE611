@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เว็ปไซต์ของฉัน</title>
+    <style>
+        body {
+            font-family: "Segoe UI", Tahoma, sans-serif;
+            background-color: #eef4ff;
+            margin: 0;
+        }
+
+        h1 {
+            color: #0b3c5d;
+        }
+
+        .highlight {
+            color: rgb(0, 0, 0);
+            font-weight: bold;
+            background-color: #a6b3c5;
+            padding: 4px 8px;
+            border-radius: 6px;
+        }
+
+        #main-header {
+            background: linear-gradient(135deg, #00ffd5, #ff006a);
+            color: white;
+            padding: 24px;
+            text-align: center;
+        }
+
+        p {
+            line-height: 1.6;
+        }
+
+        nav {
+            text-align: center;
+            margin: 16px 0;
+        }
+
+        nav a {
+            text-decoration: none;
+            margin: 0 12px;
+            font-weight: bold;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 12px;
+        }
+
+        th, td {
+            border: 1px solid #999;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: #2563eb;
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+<header id="main-header">
+    <h1>นายกิตติภพ สว่างเจริญทรัพย์</h1>
+    <p>หน้าแนะนำตัว (Lab) — สร้างด้วย HTML5 และ Semantic Tags</p>
+</header>
+
+<nav aria-label="เมนูหลัก">
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+    <a href="#table">ตาราง</a>
+</nav>
+
+<main>
+ <center>
+<section class="hero" id="about" aria-labelledby="about-title">
+
+    <img src="../Homework2/img/1.jpg" alt="รูปโปรไฟล์ของ" class="profile-img" width="150" height="160">
+
+    <div class="intro">
+        <h2 id="about-title">แนะนำตัวสั้น</h2>
+
+        <p class="highlight">ผมนายกิตติภพ สว่างเจริญทรัพย์ ศึกษาที่มหาวิทยาลัยเทคโนโลยีราชมงคลล้านนา เชียงใหม่</p>
+
+        <p>เรียนคณะ วิศวกรรมศาสตร์ สาขา วิศวกรรมไฟฟ้า  
+        สาขาวิชา วศ.บ.วิศวกรรมซอฟต์แวร์</p>
+
+        <p><strong>วัน/เดือน/ปี เกิด:</strong> 3 มิถุนายน ปี พ.ศ. 2546</p>
+    </div>
+
+</section>
+
+<div class="columns">
+
+<section id="projects" aria-labelledby="projects-title">
+</center>
+    <h2 id="projects-title">ผลที่จะได้รับจากรายวิชานี้</h2>
+
+    <ul>
+        <li>ได้ความรู้จากการสร้างเว็ปไซต์</li>
+        <li>สามารถสร้างเว็ปไซต์ได้</li>
+        <li>สามารถออกแบบเว็ปไซต์ได้</li>
+    </ul>
+
+    <table aria-label="ตารางการออกกำลังกาย">
+        <thead>
+            <tr>
+                <th colspan="3">ตารางการออกกำลังกาย</th>
+            </tr>
+            <tr>
+                <th>จันทร์</th>
+                <th>อังคาร</th>
+                <th>พุธ</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>วิดพื้น</td>
+                <td>วิ่ง</td>
+                <td>sit up</td>
+            </tr>
+        </tbody>
+    </table>
+
+</section>
+
+<aside aria-label="ข้อมูลติดต่อด่วน">
+
+    <h2>ติดต่อ / แบบฟอร์ม</h2>
+
+    <form id="contact" action="#" method="post">
+
+        <label for="name">ชื่อ-นามสกุล</label>
+        <input type="text" id="name" name="name" placeholder="ใส่ชื่อของคุณ">
+
+        <label for="email">อีเมล</label>
+        <input type="email" id="email" name="email" placeholder="you@gmail.com">
+
+        <label for="role">บทบาท</label>
+        <select id="role" name="role">
+            <option value="">-- เลือก --</option>
+            <option value="student">นักศึกษา</option>
+            <option value="teacher">อาจารย์</option>
+        </select>
+
+        <label for="message">ข้อความ / คำถาม</label>
+        <textarea id="message" name="message" placeholder="พิมพ์ข้อความของคุณที่นี่"></textarea>
+
+        <button type="submit" class="btn">ส่งข้อความ</button>
+
+    </form>
+
+    <div style="margin-top:12px;">
+        <h3>Social</h3>
+
+        <div class="social">
+            <a class="btn" href="https://www.facebook.com/kittiphob.sawangcharoensap/" target="_blank">Facebook</a>
+            <a class="btn" href="https://www.instagram.com/kitt_.mxx/" target="_blank">Instagram</a>
+        </div>
+    </div>
+
+</aside>
+
+</div>
+</main>
+<center>
+<footer>
+    <p>กิตติภพ สว่างเจริญทรัพย์</p>
+    <p>RMUTL 68543210021-0</p>
+</footer>
+</center>
+</div>
+</body>
+</html>
