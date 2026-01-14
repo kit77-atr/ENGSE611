@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>Card Layout ด้วย Flexbox</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f3f3;
+            margin: 0;
+            padding: 40px;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #000;
+        }
+
+        /* กล่องรวมการ์ด */
+        .card-container {
+            display: flex;
+            gap: 30px;
+        }
+
+        /* การ์ด */
+        .card {
+            width: 280px;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        /* สีการ์ดแต่ละใบ */
+        .card1 {
+            background-color: #e3f2fd; /* ฟ้าอ่อน */
+        }
+
+        .card2 {
+            background-color: #e8f5e9; /* เขียวอ่อน */
+        }
+
+        .card3 {
+            background-color: #fff3e0; /* ส้มอ่อน */
+        }
+
+        /* hover effect */
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card h3 {
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #555;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>โจทย์ที่ 1: Card Layout ด้วย Flexbox</h2>
+
+    <div class="card-container">
+        <div class="card card1">
+            <h3>เทคโนโลยีสารสนเทศ</h3>
+            <p>
+                เทคโนโลยีสารสนเทศมีบทบาทสำคัญต่อการดำเนินชีวิตประจำวัน
+                ไม่ว่าจะเป็นการสื่อสาร การเรียนออนไลน์ และการทำงาน
+                ช่วยให้เข้าถึงข้อมูลได้รวดเร็วและสะดวกมากยิ่งขึ้น
+            </p>
+        </div>
+
+        <div class="card card2">
+            <h3>การพัฒนาเว็บไซต์</h3>
+            <p>
+                การพัฒนาเว็บไซต์เป็นทักษะพื้นฐานที่สำคัญในยุคดิจิทัล
+                ใช้ HTML สำหรับโครงสร้าง CSS สำหรับการออกแบบ
+                และ JavaScript เพื่อเพิ่มความสามารถให้เว็บไซต์
+            </p>
+        </div>
+
+        <div class="card card3">
+            <h3>การเรียนรู้ตลอดชีวิต</h3>
+            <p>
+                การเรียนรู้ตลอดชีวิตช่วยพัฒนาความรู้และทักษะใหม่ ๆ
+                ทำให้สามารถปรับตัวกับการเปลี่ยนแปลงของเทคโนโลยี
+                และนำความรู้ไปใช้ในการทำงานและชีวิตประจำวันได้
+            </p>
+        </div>
+    </div>
+
+</body>
+</html>
